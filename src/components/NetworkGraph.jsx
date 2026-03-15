@@ -142,48 +142,50 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            {/* Circular flywheel path */}
+            {/* Circular flywheel path — static background */}
+            <ellipse
+              cx={250}
+              cy={180}
+              rx={200}
+              ry={140}
+              fill="none"
+              stroke="rgba(45,212,191,0.06)"
+              strokeWidth={40}
+            />
+            {/* Animated rotating dash overlay */}
             <motion.ellipse
               cx={250}
               cy={180}
               rx={200}
               ry={140}
               fill="none"
-              stroke="rgba(45,212,191,0.1)"
-              strokeWidth={40}
-              strokeDasharray="8 6"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 2 }}
-            />
-            {/* Rotating particle on the flywheel */}
-            <motion.circle
-              r={5}
-              fill="#2dd4bf"
-              animate={{
-                cx: [450, 250, 50, 250, 450],
-                cy: [180, 320, 180, 40, 180],
-              }}
+              stroke="rgba(45,212,191,0.18)"
+              strokeWidth={2}
+              strokeDasharray="30 50"
+              initial={{ strokeDashoffset: 0 }}
+              animate={{ strokeDashoffset: -800 }}
               transition={{
-                duration: 6,
+                duration: 8,
                 repeat: Infinity,
                 ease: 'linear',
               }}
-              opacity={0.6}
             />
-            <motion.circle
-              r={5}
-              fill="#fb923c"
-              animate={{
-                cx: [50, 250, 450, 250, 50],
-                cy: [180, 40, 180, 320, 180],
-              }}
+            <motion.ellipse
+              cx={250}
+              cy={180}
+              rx={200}
+              ry={140}
+              fill="none"
+              stroke="rgba(45,212,191,0.12)"
+              strokeWidth={1.5}
+              strokeDasharray="20 60"
+              initial={{ strokeDashoffset: -400 }}
+              animate={{ strokeDashoffset: 400 }}
               transition={{
-                duration: 6,
+                duration: 10,
                 repeat: Infinity,
                 ease: 'linear',
               }}
-              opacity={0.6}
             />
             <text
               x={250}
