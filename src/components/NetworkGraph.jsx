@@ -54,7 +54,7 @@ function getPositions(currentStep) {
   return NODE_POSITIONS
 }
 
-export default function NetworkGraph({ agents, activeAgents, connections, currentStep, mobile }) {
+export default function NetworkGraph({ agents, activeAgents, connections, currentStep, mobile, light }) {
   const positions = getPositions(currentStep)
 
   const particles = useMemo(() => {
@@ -340,8 +340,8 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
                 cx={pos.x}
                 cy={pos.y}
                 r={nodeRadius}
-                fill={isActive ? agent.color + '25' : 'rgba(255,255,255,0.03)'}
-                stroke={isActive ? agent.color : 'rgba(255,255,255,0.08)'}
+                fill={isActive ? agent.color + '25' : light ? 'rgba(0,0,0,0.03)' : 'rgba(255,255,255,0.03)'}
+                stroke={isActive ? agent.color : light ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.08)'}
                 strokeWidth={isActive ? 2 : 1}
                 strokeDasharray={isMemoryNode ? '3 3' : 'none'}
                 initial={{ opacity: 0, scale: 0 }}
@@ -377,7 +377,7 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
                 fontSize={9}
                 fontWeight={600}
                 fontFamily="Inter, sans-serif"
-                fill={isActive ? agent.color : '#444'}
+                fill={isActive ? agent.color : light ? '#9ca3af' : '#444'}
               >
                 {agent.name}
               </text>
@@ -393,7 +393,7 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
           <span>Active Agent</span>
         </div>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendDot, background: '#333' }} />
+          <div style={{ ...styles.legendDot, background: 'var(--text-dimmest)' }} />
           <span>Inactive</span>
         </div>
         <div style={styles.legendItem}>
@@ -425,8 +425,8 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
 
 const styles = {
   container: {
-    background: 'rgba(255,255,255,0.02)',
-    border: '1px solid rgba(255,255,255,0.06)',
+    background: 'var(--bg-card)',
+    border: '1px solid var(--border-subtle)',
     borderRadius: 12,
     padding: 16,
     height: '100%',
@@ -437,7 +437,7 @@ const styles = {
   label: {
     fontSize: 12,
     fontWeight: 600,
-    color: '#555',
+    color: 'var(--text-dimmer)',
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
     alignSelf: 'flex-start',
@@ -458,7 +458,7 @@ const styles = {
     alignItems: 'center',
     gap: 6,
     fontSize: 11,
-    color: '#555',
+    color: 'var(--text-dimmer)',
   },
   legendDot: {
     width: 8,

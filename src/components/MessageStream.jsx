@@ -60,8 +60,8 @@ export default function MessageStream({ messages, agents }) {
 
 const styles = {
   container: {
-    background: 'rgba(255,255,255,0.02)',
-    border: '1px solid rgba(255,255,255,0.06)',
+    background: 'var(--bg-card)',
+    border: '1px solid var(--border-subtle)',
     borderRadius: 12,
     overflow: 'hidden',
     flex: 1,
@@ -71,8 +71,8 @@ const styles = {
     alignItems: 'center',
     gap: 8,
     padding: '10px 16px',
-    borderBottom: '1px solid rgba(255,255,255,0.06)',
-    background: 'rgba(255,255,255,0.02)',
+    borderBottom: '1px solid var(--border-subtle)',
+    background: 'var(--bg-card)',
   },
   dot: {
     width: 6,
@@ -83,7 +83,7 @@ const styles = {
   headerText: {
     fontSize: 12,
     fontWeight: 600,
-    color: '#666',
+    color: 'var(--text-dim)',
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
   },
@@ -96,7 +96,7 @@ const styles = {
     gap: 10,
   },
   message: {
-    background: 'rgba(255,255,255,0.03)',
+    background: 'var(--bg-card-alt)',
     borderRadius: 8,
     padding: '10px 14px',
   },
@@ -115,7 +115,7 @@ const styles = {
   },
   msgText: {
     fontSize: 13,
-    color: '#b0b0b0',
+    color: 'var(--text-secondary)',
     lineHeight: 1.6,
     whiteSpace: 'pre-line',
   },

@@ -24,6 +24,7 @@ const styles = {
     paddingTop: 20,
     position: 'relative',
     zIndex: 1,
+    flex: 1,
   },
   title: {
     fontSize: 48,
@@ -36,7 +37,7 @@ const styles = {
   },
   subtitle: {
     fontSize: 16,
-    color: '#777',
+    color: 'var(--text-muted)',
     maxWidth: 560,
     margin: '0 auto',
     lineHeight: 1.6,
@@ -50,6 +51,7 @@ const mobileStyles = {
     paddingTop: 12,
     position: 'relative',
     zIndex: 1,
+    flex: 1,
   },
   title: {
     fontSize: 32,
@@ -62,7 +64,7 @@ const mobileStyles = {
   },
   subtitle: {
     fontSize: 14,
-    color: '#777',
+    color: 'var(--text-muted)',
     maxWidth: '100%',
     margin: '0 auto',
     lineHeight: 1.5,

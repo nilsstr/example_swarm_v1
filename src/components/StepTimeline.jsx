@@ -23,7 +23,7 @@ export default function StepTimeline({ steps, currentStep, onStepClick }) {
                   ? '#3b82f6'
                   : isPast
                   ? '#1d4ed8'
-                  : 'rgba(255,255,255,0.08)',
+                  : 'var(--bg-card-hover)',
                 scale: isActive ? 1.2 : 1,
               }}
               transition={{ duration: 0.3 }}
@@ -32,14 +32,14 @@ export default function StepTimeline({ steps, currentStep, onStepClick }) {
                 border: isActive ? '2px solid #93c5fd' : '2px solid transparent',
               }}
             >
-              <span style={{ fontSize: 10, color: isActive || isPast ? '#fff' : '#555' }}>
+              <span style={{ fontSize: 10, color: isActive || isPast ? '#fff' : 'var(--text-dimmer)' }}>
                 {i + 1}
               </span>
             </motion.div>
             <span
               style={{
                 ...styles.label,
-                color: isActive ? '#93c5fd' : isPast ? '#3b82f6' : '#555',
+                color: isActive ? '#93c5fd' : isPast ? '#3b82f6' : 'var(--text-dimmer)',
                 fontWeight: isActive ? 700 : 500,
               }}
             >
@@ -67,7 +67,7 @@ const styles = {
     left: 30,
     right: 30,
     height: 2,
-    background: 'rgba(255,255,255,0.06)',
+    background: 'var(--border-subtle)',
   },
   step: {
     display: 'flex',

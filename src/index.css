@@ -4,14 +4,55 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-page: #0a0a0f;
+  --bg-card: rgba(255,255,255,0.02);
+  --bg-card-alt: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.05);
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-medium: rgba(255,255,255,0.1);
+  --text-primary: #fff;
+  --text-body: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888;
+  --text-dim: #666;
+  --text-dimmer: #555;
+  --text-dimmest: #444;
+  --text-step-btn: #999;
+  --svg-inactive-fill: rgba(255,255,255,0.03);
+  --svg-inactive-stroke: rgba(255,255,255,0.08);
+  --glow-opacity: 0.08;
+}
+
+.light-mode {
+  --bg-page: #f0f2f6;
+  --bg-card: rgba(0,0,0,0.03);
+  --bg-card-alt: rgba(0,0,0,0.04);
+  --bg-card-hover: rgba(0,0,0,0.06);
+  --border-subtle: rgba(0,0,0,0.08);
+  --border-medium: rgba(0,0,0,0.12);
+  --text-primary: #111827;
+  --text-body: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --text-dimmer: #9ca3af;
+  --text-dimmest: #d1d5db;
+  --text-step-btn: #6b7280;
+  --svg-inactive-fill: rgba(0,0,0,0.03);
+  --svg-inactive-stroke: rgba(0,0,0,0.1);
+  --glow-opacity: 0.04;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0a0a0f;
-  color: #e0e0e0;
+  background: var(--bg-page);
+  color: var(--text-body);
   overflow-x: hidden;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s, color 0.3s;
 }
 
 #root {

@@ -6,6 +6,7 @@ import AgentCard from './components/AgentCard'
 import MessageStream from './components/MessageStream'
 import Header from './components/Header'
 import ProgressBar from './components/ProgressBar'
+import ThemeToggle from './components/ThemeToggle'
 import useIsMobile from './hooks/useIsMobile'
 
 const STEPS = [
@@ -322,7 +323,12 @@ export default function App() {
   const [currentStep, setCurrentStep] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [messageIndex, setMessageIndex] = useState(0)
+  const [light, setLight] = useState(false)
   const mobile = useIsMobile()
+
+  useEffect(() => {
+    document.body.classList.toggle('light-mode', light)
+  }, [light])
 
   const step = STEPS[currentStep]
   const visibleMessages = step.messages.slice(0, messageIndex + 1)
@@ -364,7 +370,10 @@ export default function App() {
   return (
     <div style={mobile ? mobileStyles.container : styles.container}>
       <div style={styles.bgGlow} />
-      <Header mobile={mobile} />
+      <div style={styles.topBar}>
+        <Header mobile={mobile} light={light} />
+        <ThemeToggle light={light} onToggle={() => setLight(l => !l)} />
+      </div>
       <ProgressBar current={currentStep} total={STEPS.length} />
 
       <div style={mobile ? mobileStyles.controls : styles.controls}>
@@ -408,6 +417,7 @@ export default function App() {
             connections={step.connections}
             currentStep={currentStep}
             mobile={mobile}
+            light={light}
           />
         </div>
 
@@ -451,6 +461,13 @@ const styles = {
     maxWidth: 1400,
     margin: '0 auto',
   },
+  topBar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    position: 'relative',
+    zIndex: 1,
+  },
   bgGlow: {
     position: 'fixed',
     top: '50%',
@@ -458,7 +475,7 @@ const styles = {
     transform: 'translate(-50%, -50%)',
     width: 800,
     height: 800,
-    background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(59,130,246,var(--glow-opacity)) 0%, transparent 70%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -491,9 +508,9 @@ const styles = {
     width: 36,
     height: 36,
     borderRadius: 8,
-    border: '1px solid rgba(255,255,255,0.1)',
-    background: 'rgba(255,255,255,0.05)',
-    color: '#999',
+    border: '1px solid var(--border-medium)',
+    background: 'var(--bg-card-hover)',
+    color: 'var(--text-step-btn)',
     fontSize: 13,
     fontWeight: 600,
     cursor: 'pointer',
@@ -522,7 +539,7 @@ const styles = {
   stepTitle: {
     fontSize: 28,
     fontWeight: 800,
-    color: '#fff',
+    color: 'var(--text-primary)',
     marginBottom: 4,
     letterSpacing: '-0.02em',
   },
@@ -534,7 +551,7 @@ const styles = {
   },
   stepDescription: {
     fontSize: 14,
-    color: '#888',
+    color: 'var(--text-muted)',
     lineHeight: 1.6,
     maxWidth: 700,
   },
@@ -603,9 +620,9 @@ const mobileStyles = {
     width: 32,
     height: 32,
     borderRadius: 6,
-    border: '1px solid rgba(255,255,255,0.1)',
-    background: 'rgba(255,255,255,0.05)',
-    color: '#999',
+    border: '1px solid var(--border-medium)',
+    background: 'var(--bg-card-hover)',
+    color: 'var(--text-step-btn)',
     fontSize: 11,
     fontWeight: 600,
     cursor: 'pointer',
@@ -621,7 +638,7 @@ const mobileStyles = {
   stepTitle: {
     fontSize: 22,
     fontWeight: 800,
-    color: '#fff',
+    color: 'var(--text-primary)',
     marginBottom: 4,
     letterSpacing: '-0.02em',
   },
@@ -633,7 +650,7 @@ const mobileStyles = {
   },
   stepDescription: {
     fontSize: 13,
-    color: '#888',
+    color: 'var(--text-muted)',
     lineHeight: 1.5,
   },
   mainGrid: {
