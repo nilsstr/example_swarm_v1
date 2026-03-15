@@ -25,7 +25,7 @@ const styles = {
   },
   track: {
     height: 3,
-    background: 'var(--border-subtle)',
+    background: 'rgba(255,255,255,0.06)',
     borderRadius: 2,
     overflow: 'hidden',
   },

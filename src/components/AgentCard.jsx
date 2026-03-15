@@ -11,7 +11,7 @@ export default function AgentCard({ agent, isActive }) {
       transition={{ duration: 0.4, type: 'spring', stiffness: 200 }}
       style={{
         ...styles.card,
-        borderColor: isActive ? agent.color + '55' : 'var(--border-subtle)',
+        borderColor: isActive ? agent.color + '55' : 'rgba(255,255,255,0.06)',
         boxShadow: isActive ? `0 0 20px ${agent.color}15` : 'none',
       }}
     >
@@ -33,7 +33,7 @@ export default function AgentCard({ agent, isActive }) {
 
 const styles = {
   card: {
-    background: 'var(--bg-card-alt)',
+    background: 'rgba(255,255,255,0.03)',
     border: '1px solid',
     borderRadius: 10,
     padding: '8px 12px',
@@ -63,7 +63,7 @@ const styles = {
   },
   desc: {
     fontSize: 11,
-    color: 'var(--text-dim)',
+    color: '#666',
     lineHeight: 1.4,
   },
 }
