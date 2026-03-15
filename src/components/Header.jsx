@@ -1,16 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-export default function Header() {
+export default function Header({ mobile }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      style={styles.header}
+      style={mobile ? mobileStyles.header : styles.header}
     >
       <div style={styles.badge}>CLAUDE CODE</div>
-      <h1 style={styles.title}>Swarm Mode</h1>
-      <p style={styles.subtitle}>
+      <h1 style={mobile ? mobileStyles.title : styles.title}>Swarm Mode</h1>
+      <p style={mobile ? mobileStyles.subtitle : styles.subtitle}>
         How a network of specialized AI agents collaborates to produce
         investment-grade analysis — in parallel.
       </p>
@@ -53,5 +53,32 @@ const styles = {
     maxWidth: 560,
     margin: '0 auto',
     lineHeight: 1.6,
+  },
+}
+
+const mobileStyles = {
+  header: {
+    textAlign: 'center',
+    marginBottom: 24,
+    paddingTop: 12,
+    position: 'relative',
+    zIndex: 1,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 800,
+    background: 'linear-gradient(135deg, #c084fc, #818cf8, #60a5fa)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    letterSpacing: '-0.03em',
+    marginBottom: 6,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#777',
+    maxWidth: '100%',
+    margin: '0 auto',
+    lineHeight: 1.5,
+    padding: '0 8px',
   },
 }

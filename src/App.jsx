@@ -6,6 +6,7 @@ import AgentCard from './components/AgentCard'
 import MessageStream from './components/MessageStream'
 import Header from './components/Header'
 import ProgressBar from './components/ProgressBar'
+import useIsMobile from './hooks/useIsMobile'
 
 const STEPS = [
   {
@@ -321,6 +322,7 @@ export default function App() {
   const [currentStep, setCurrentStep] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [messageIndex, setMessageIndex] = useState(0)
+  const mobile = useIsMobile()
 
   const step = STEPS[currentStep]
   const visibleMessages = step.messages.slice(0, messageIndex + 1)
@@ -360,22 +362,22 @@ export default function App() {
   }, [currentStep, messageIndex, step.messages.length])
 
   return (
-    <div style={styles.container}>
+    <div style={mobile ? mobileStyles.container : styles.container}>
       <div style={styles.bgGlow} />
-      <Header />
+      <Header mobile={mobile} />
       <ProgressBar current={currentStep} total={STEPS.length} />
 
-      <div style={styles.controls}>
-        <button onClick={togglePlay} style={styles.playBtn}>
-          {isPlaying ? '⏸ Pause' : '▶ Play Animation'}
+      <div style={mobile ? mobileStyles.controls : styles.controls}>
+        <button onClick={togglePlay} style={mobile ? mobileStyles.playBtn : styles.playBtn}>
+          {isPlaying ? '⏸ Pause' : '▶ Play'}
         </button>
-        <div style={styles.stepButtons}>
+        <div style={mobile ? mobileStyles.stepButtons : styles.stepButtons}>
           {STEPS.map((s, i) => (
             <button
               key={s.id}
               onClick={() => goToStep(i)}
               style={{
-                ...styles.stepBtn,
+                ...(mobile ? mobileStyles.stepBtn : styles.stepBtn),
                 ...(i === currentStep ? styles.stepBtnActive : {}),
               }}
             >
@@ -390,21 +392,22 @@ export default function App() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        style={styles.stepHeader}
+        style={mobile ? mobileStyles.stepHeader : styles.stepHeader}
       >
         <div style={styles.stepNumber}>Step {currentStep + 1} of {STEPS.length}</div>
-        <h2 style={styles.stepTitle}>{step.title}</h2>
-        <p style={styles.stepSubtitle}>{step.subtitle}</p>
-        <p style={styles.stepDescription}>{step.description}</p>
+        <h2 style={mobile ? mobileStyles.stepTitle : styles.stepTitle}>{step.title}</h2>
+        <p style={mobile ? mobileStyles.stepSubtitle : styles.stepSubtitle}>{step.subtitle}</p>
+        <p style={mobile ? mobileStyles.stepDescription : styles.stepDescription}>{step.description}</p>
       </motion.div>
 
-      <div style={styles.mainGrid}>
-        <div style={styles.leftPanel}>
+      <div style={mobile ? mobileStyles.mainGrid : styles.mainGrid}>
+        <div style={mobile ? mobileStyles.leftPanel : styles.leftPanel}>
           <NetworkGraph
             agents={AGENTS}
             activeAgents={step.activeAgents}
             connections={step.connections}
             currentStep={currentStep}
+            mobile={mobile}
           />
         </div>
 
@@ -429,11 +432,13 @@ export default function App() {
         </div>
       </div>
 
-      <StepTimeline
-        steps={STEPS}
-        currentStep={currentStep}
-        onStepClick={goToStep}
-      />
+      {!mobile && (
+        <StepTimeline
+          steps={STEPS}
+          currentStep={currentStep}
+          onStepClick={goToStep}
+        />
+      )}
     </div>
   )
 }
@@ -476,6 +481,7 @@ const styles = {
     cursor: 'pointer',
     fontFamily: 'Inter, sans-serif',
     letterSpacing: '0.02em',
+    flexShrink: 0,
   },
   stepButtons: {
     display: 'flex',
@@ -493,6 +499,7 @@ const styles = {
     cursor: 'pointer',
     fontFamily: 'Inter, sans-serif',
     transition: 'all 0.2s',
+    flexShrink: 0,
   },
   stepBtnActive: {
     background: 'rgba(139,92,246,0.3)',
@@ -551,5 +558,93 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     gap: 8,
+  },
+}
+
+const mobileStyles = {
+  container: {
+    minHeight: '100vh',
+    padding: '16px 16px 40px',
+    position: 'relative',
+    maxWidth: '100vw',
+    overflow: 'hidden',
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
+    marginBottom: 20,
+    position: 'relative',
+    zIndex: 1,
+  },
+  playBtn: {
+    background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+    color: '#fff',
+    border: 'none',
+    borderRadius: 10,
+    padding: '12px 20px',
+    fontSize: 14,
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'Inter, sans-serif',
+    letterSpacing: '0.02em',
+    width: '100%',
+  },
+  stepButtons: {
+    display: 'flex',
+    gap: 4,
+    overflowX: 'auto',
+    WebkitOverflowScrolling: 'touch',
+    paddingBottom: 4,
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+  },
+  stepBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 6,
+    border: '1px solid rgba(255,255,255,0.1)',
+    background: 'rgba(255,255,255,0.05)',
+    color: '#999',
+    fontSize: 11,
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'Inter, sans-serif',
+    transition: 'all 0.2s',
+    flexShrink: 0,
+  },
+  stepHeader: {
+    marginBottom: 20,
+    position: 'relative',
+    zIndex: 1,
+  },
+  stepTitle: {
+    fontSize: 22,
+    fontWeight: 800,
+    color: '#fff',
+    marginBottom: 4,
+    letterSpacing: '-0.02em',
+  },
+  stepSubtitle: {
+    fontSize: 14,
+    color: '#a78bfa',
+    fontWeight: 500,
+    marginBottom: 6,
+  },
+  stepDescription: {
+    fontSize: 13,
+    color: '#888',
+    lineHeight: 1.5,
+  },
+  mainGrid: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16,
+    marginBottom: 24,
+    position: 'relative',
+    zIndex: 1,
+  },
+  leftPanel: {
+    minHeight: 280,
   },
 }

@@ -12,6 +12,9 @@ const AGENT_META = {
   userA: { icon: '👤', name: 'User A (SaaS)', color: '#38bdf8' },
   userB: { icon: '👤', name: 'User B (Macro)', color: '#a78bfa' },
   userC: { icon: '👤', name: 'User C (Junior)', color: '#4ade80' },
+  tracker: { icon: '📡', name: 'Outcome Tracker', color: '#fb923c' },
+  patterns: { icon: '🔍', name: 'Pattern Discovery', color: '#2dd4bf' },
+  scorer: { icon: '⚡', name: 'Risk/Chance Scorer', color: '#facc15' },
 }
 
 export default function MessageStream({ messages, agents }) {

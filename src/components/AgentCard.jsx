@@ -36,9 +36,9 @@ const styles = {
     background: 'rgba(255,255,255,0.03)',
     border: '1px solid',
     borderRadius: 10,
-    padding: '10px 14px',
-    flex: '1 1 180px',
-    minWidth: 180,
+    padding: '8px 12px',
+    flex: '1 1 140px',
+    minWidth: 140,
   },
   iconRow: {
     display: 'flex',

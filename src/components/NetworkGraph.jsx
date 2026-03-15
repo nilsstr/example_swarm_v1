@@ -54,7 +54,7 @@ function getPositions(currentStep) {
   return NODE_POSITIONS
 }
 
-export default function NetworkGraph({ agents, activeAgents, connections, currentStep }) {
+export default function NetworkGraph({ agents, activeAgents, connections, currentStep, mobile }) {
   const positions = getPositions(currentStep)
 
   const particles = useMemo(() => {
@@ -86,7 +86,13 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
       <div style={styles.label}>
         {currentStep >= 9 ? 'Self-Learning Agent Network' : currentStep >= 6 ? 'Agent Network + Memory Layer' : 'Agent Network'}
       </div>
-      <svg width="500" height="380" viewBox="0 0 500 380" style={styles.svg}>
+      <svg
+        width={mobile ? '100%' : 500}
+        height={mobile ? 260 : 380}
+        viewBox="0 0 500 380"
+        preserveAspectRatio="xMidYMid meet"
+        style={styles.svg}
+      >
         <defs>
           {Object.values(agents).map(agent => (
             <radialGradient key={agent.id} id={`glow-${agent.id}`}>
@@ -397,6 +403,18 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
             <div style={{ ...styles.legendDot, background: '#f472b6', border: '1px dashed #f472b6' }} />
             <span>Memory</span>
           </div>
+        )}
+        {currentStep >= 9 && (
+          <>
+            <div style={styles.legendItem}>
+              <div style={{ ...styles.legendDot, background: '#2dd4bf' }} />
+              <span>Learning</span>
+            </div>
+            <div style={styles.legendItem}>
+              <div style={{ ...styles.legendDot, background: '#fb923c' }} />
+              <span>Tracking</span>
+            </div>
+          </>
         )}
       </div>
     </div>
