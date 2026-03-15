@@ -236,7 +236,7 @@ const AGENTS = {
     id: 'orchestrator',
     name: 'Orchestrator',
     icon: '🧠',
-    color: '#c084fc',
+    color: '#93c5fd',
     description: 'Decomposes tasks, spawns agents, synthesizes results',
   },
   financial: {
@@ -285,7 +285,7 @@ const AGENTS = {
     id: 'userB',
     name: 'User B (Macro)',
     icon: '👤',
-    color: '#a78bfa',
+    color: '#7dd3fc',
     description: 'Macro strategist — geopolitical risk focus',
   },
   userC: {
@@ -458,7 +458,7 @@ const styles = {
     transform: 'translate(-50%, -50%)',
     width: 800,
     height: 800,
-    background: 'radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)',
+    background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)',
     pointerEvents: 'none',
     zIndex: 0,
   },
@@ -471,7 +471,7 @@ const styles = {
     zIndex: 1,
   },
   playBtn: {
-    background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+    background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
     color: '#fff',
     border: 'none',
     borderRadius: 10,
@@ -502,9 +502,9 @@ const styles = {
     flexShrink: 0,
   },
   stepBtnActive: {
-    background: 'rgba(139,92,246,0.3)',
-    borderColor: '#8b5cf6',
-    color: '#c084fc',
+    background: 'rgba(59,130,246,0.3)',
+    borderColor: '#3b82f6',
+    color: '#93c5fd',
   },
   stepHeader: {
     marginBottom: 32,
@@ -514,7 +514,7 @@ const styles = {
   stepNumber: {
     fontSize: 12,
     fontWeight: 600,
-    color: '#8b5cf6',
+    color: '#3b82f6',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
     marginBottom: 6,
@@ -528,7 +528,7 @@ const styles = {
   },
   stepSubtitle: {
     fontSize: 16,
-    color: '#a78bfa',
+    color: '#7dd3fc',
     fontWeight: 500,
     marginBottom: 8,
   },
@@ -578,7 +578,7 @@ const mobileStyles = {
     zIndex: 1,
   },
   playBtn: {
-    background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
+    background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
     color: '#fff',
     border: 'none',
     borderRadius: 10,
@@ -627,7 +627,7 @@ const mobileStyles = {
   },
   stepSubtitle: {
     fontSize: 14,
-    color: '#a78bfa',
+    color: '#7dd3fc',
     fontWeight: 500,
     marginBottom: 6,
   },

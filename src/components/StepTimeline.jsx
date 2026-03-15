@@ -20,16 +20,16 @@ export default function StepTimeline({ steps, currentStep, onStepClick }) {
             <motion.div
               animate={{
                 background: isActive
-                  ? '#8b5cf6'
+                  ? '#3b82f6'
                   : isPast
-                  ? '#6d28d9'
+                  ? '#1d4ed8'
                   : 'rgba(255,255,255,0.08)',
                 scale: isActive ? 1.2 : 1,
               }}
               transition={{ duration: 0.3 }}
               style={{
                 ...styles.dot,
-                border: isActive ? '2px solid #c084fc' : '2px solid transparent',
+                border: isActive ? '2px solid #93c5fd' : '2px solid transparent',
               }}
             >
               <span style={{ fontSize: 10, color: isActive || isPast ? '#fff' : '#555' }}>
@@ -39,7 +39,7 @@ export default function StepTimeline({ steps, currentStep, onStepClick }) {
             <span
               style={{
                 ...styles.label,
-                color: isActive ? '#c084fc' : isPast ? '#8b5cf6' : '#555',
+                color: isActive ? '#93c5fd' : isPast ? '#3b82f6' : '#555',
                 fontWeight: isActive ? 700 : 500,
               }}
             >

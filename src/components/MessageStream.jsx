@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const AGENT_META = {
   user: { icon: '💼', name: 'Investment Analyst', color: '#94a3b8' },
-  orchestrator: { icon: '🧠', name: 'Orchestrator', color: '#c084fc' },
+  orchestrator: { icon: '🧠', name: 'Orchestrator', color: '#93c5fd' },
   financial: { icon: '📊', name: 'Financial Agent', color: '#60a5fa' },
   competitive: { icon: '🏢', name: 'Competitive Agent', color: '#34d399' },
   management: { icon: '👤', name: 'Management Agent', color: '#fbbf24' },
   macro: { icon: '🌍', name: 'Macro Agent', color: '#f87171' },
   memory: { icon: '💾', name: 'Memory Layer', color: '#f472b6' },
   userA: { icon: '👤', name: 'User A (SaaS)', color: '#38bdf8' },
-  userB: { icon: '👤', name: 'User B (Macro)', color: '#a78bfa' },
+  userB: { icon: '👤', name: 'User B (Macro)', color: '#7dd3fc' },
   userC: { icon: '👤', name: 'User C (Junior)', color: '#4ade80' },
   tracker: { icon: '📡', name: 'Outcome Tracker', color: '#fb923c' },
   patterns: { icon: '🔍', name: 'Pattern Discovery', color: '#2dd4bf' },

@@ -31,7 +31,7 @@ const styles = {
   },
   fill: {
     height: '100%',
-    background: 'linear-gradient(90deg, #8b5cf6, #6d28d9)',
+    background: 'linear-gradient(90deg, #3b82f6, #1d4ed8)',
     borderRadius: 2,
   },
 }

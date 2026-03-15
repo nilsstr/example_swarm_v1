@@ -8,7 +8,6 @@ export default function Header({ mobile }) {
       animate={{ opacity: 1, y: 0 }}
       style={mobile ? mobileStyles.header : styles.header}
     >
-      <div style={styles.badge}>CLAUDE CODE</div>
       <h1 style={mobile ? mobileStyles.title : styles.title}>Swarm Mode</h1>
       <p style={mobile ? mobileStyles.subtitle : styles.subtitle}>
         How a network of specialized AI agents collaborates to produce
@@ -26,22 +25,10 @@ const styles = {
     position: 'relative',
     zIndex: 1,
   },
-  badge: {
-    display: 'inline-block',
-    fontSize: 11,
-    fontWeight: 700,
-    letterSpacing: '0.15em',
-    color: '#c084fc',
-    background: 'rgba(139,92,246,0.15)',
-    border: '1px solid rgba(139,92,246,0.3)',
-    borderRadius: 6,
-    padding: '4px 12px',
-    marginBottom: 12,
-  },
   title: {
     fontSize: 48,
     fontWeight: 800,
-    background: 'linear-gradient(135deg, #c084fc, #818cf8, #60a5fa)',
+    background: 'linear-gradient(135deg, #93c5fd, #3b82f6, #1d4ed8)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     letterSpacing: '-0.03em',
@@ -67,7 +54,7 @@ const mobileStyles = {
   title: {
     fontSize: 32,
     fontWeight: 800,
-    background: 'linear-gradient(135deg, #c084fc, #818cf8, #60a5fa)',
+    background: 'linear-gradient(135deg, #93c5fd, #3b82f6, #1d4ed8)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     letterSpacing: '-0.03em',

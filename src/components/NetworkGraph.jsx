@@ -19,10 +19,10 @@ const NODE_POSITIONS = {
 // Steps 6-8 use a different layout to highlight memory + users
 const MEMORY_POSITIONS = {
   orchestrator: { x: 250, y: 50 },
-  financial: { x: 100, y: 180 },
-  competitive: { x: 400, y: 180 },
-  management: { x: 350, y: 260 },
-  macro: { x: 430, y: 180 },
+  financial: { x: 80, y: 220 },
+  competitive: { x: 420, y: 140 },
+  management: { x: 420, y: 260 },
+  macro: { x: 80, y: 140 },
   memory: { x: 250, y: 170 },
   userA: { x: 100, y: 310 },
   userB: { x: 250, y: 330 },
@@ -62,7 +62,7 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
       from: positions[conn[0]],
       to: positions[conn[1]],
       key: `${conn[0]}-${conn[1]}-${currentStep}-${i}`,
-      color: agents[conn[0]]?.color || '#8b5cf6',
+      color: agents[conn[0]]?.color || '#3b82f6',
     }))
   }, [connections, currentStep, agents, positions])
 
@@ -239,7 +239,7 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
             const p1 = positions[from]
             const p2 = positions[to]
             if (!p1 || !p2) return null
-            const color = agents[from]?.color || '#8b5cf6'
+            const color = agents[from]?.color || '#3b82f6'
             return (
               <motion.line
                 key={`line-${from}-${to}-${currentStep}`}
@@ -387,7 +387,7 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
       {/* Legend */}
       <div style={styles.legend}>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendDot, background: '#c084fc' }} />
+          <div style={{ ...styles.legendDot, background: '#93c5fd' }} />
           <span>Active Agent</span>
         </div>
         <div style={styles.legendItem}>
@@ -395,7 +395,7 @@ export default function NetworkGraph({ agents, activeAgents, connections, curren
           <span>Inactive</span>
         </div>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendLine, background: '#c084fc' }} />
+          <div style={{ ...styles.legendLine, background: '#93c5fd' }} />
           <span>Data Flow</span>
         </div>
         {currentStep >= 6 && (
